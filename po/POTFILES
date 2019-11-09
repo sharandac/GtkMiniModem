@@ -1,0 +1,7 @@
+data/org.gnome.sharan.gtkminimodem.desktop.in
+data/org.gnome.sharan.gtkminimodem.appdata.xml.in
+data/org.gnome.sharan.gtkminimodem.gschema.xml
+src/gtkminimodem-window.ui
+src/main.c
+src/gtkminimodem-window.c
+

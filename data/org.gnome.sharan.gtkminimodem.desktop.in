@@ -1,0 +1,7 @@
+[Desktop Entry]
+Name=gtkminimodem
+Exec=gtkminimodem
+Terminal=false
+Type=Application
+Categories=GTK;
+StartupNotify=true
