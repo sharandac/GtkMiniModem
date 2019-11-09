@@ -4,8 +4,6 @@ A simple GTK+ frontend for minimodem.
 
 ## Installation
 
-### Using Gnome-Builder
-
 Install gnome-builder and minimodem with
 
 ```bash
