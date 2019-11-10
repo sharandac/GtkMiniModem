@@ -2,6 +2,8 @@
 
 A simple GTK+ frontend for minimodem.
 
+![GtkMinimodem](https://github.com/sharandac/GtkMiniModem/blob/master/data/GtkMinimodem.png)
+
 ## Installation
 
 Install gnome-builder and minimodem with
