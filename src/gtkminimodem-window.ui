@@ -2,7 +2,7 @@
 <!-- Generated with glade 3.22.1 -->
 <interface>
   <requires lib="gtk+" version="3.20"/>
-  <object class="GtkTextBuffer" id="recievetextbuffer"/>
+  <object class="GtkTextBuffer" id="receivetextbuffer"/>
   <object class="GtkTextBuffer" id="sendtextbuffer"/>
   <template class="GtkminimodemWindow" parent="GtkApplicationWindow">
     <property name="can_focus">False</property>
@@ -109,7 +109,7 @@
             <property name="margin_left">8</property>
             <property name="margin_top">4</property>
             <property name="hexpand">False</property>
-            <property name="label" translatable="yes">Senden</property>
+            <property name="label" translatable="yes">sender</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -256,7 +256,7 @@
             <property name="halign">start</property>
             <property name="margin_left">8</property>
             <property name="hexpand">False</property>
-            <property name="label" translatable="yes">Empfangen </property>
+            <property name="label" translatable="yes">receiver</property>
           </object>
           <packing>
             <property name="expand">False</property>
@@ -278,14 +278,14 @@
                 <property name="margin_bottom">4</property>
                 <property name="shadow_type">in</property>
                 <child>
-                  <object class="GtkTextView" id="recievetext">
+                  <object class="GtkTextView" id="receivetext">
                     <property name="height_request">0</property>
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="editable">False</property>
                     <property name="wrap_mode">word</property>
                     <property name="cursor_visible">False</property>
-                    <property name="buffer">recievetextbuffer</property>
+                    <property name="buffer">receivetextbuffer</property>
                     <property name="accepts_tab">False</property>
                   </object>
                 </child>
@@ -303,14 +303,14 @@
                 <property name="orientation">vertical</property>
                 <property name="homogeneous">True</property>
                 <child>
-                  <object class="GtkButton" id="recive">
+                  <object class="GtkButton" id="receive">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="margin_left">4</property>
                     <property name="margin_right">4</property>
                     <property name="margin_top">4</property>
-                    <signal name="button-press-event" handler="save_file" object="recievetextbuffer" swapped="yes"/>
+                    <signal name="button-press-event" handler="save_file" object="receivetextbuffer" swapped="yes"/>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
@@ -330,13 +330,13 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="recieve_trash">
+                  <object class="GtkButton" id="receive_trash">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="margin_left">4</property>
                     <property name="margin_right">4</property>
-                    <signal name="button-press-event" handler="on_recieve_trash_button_press_event" object="recievetextbuffer" swapped="yes"/>
+                    <signal name="button-press-event" handler="on_receive_trash_button_press_event" object="receivetextbuffer" swapped="yes"/>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>
@@ -356,14 +356,14 @@
                   </packing>
                 </child>
                 <child>
-                  <object class="GtkButton" id="recieve_crypt">
+                  <object class="GtkButton" id="receive_crypt">
                     <property name="visible">True</property>
                     <property name="can_focus">True</property>
                     <property name="receives_default">True</property>
                     <property name="margin_left">4</property>
                     <property name="margin_right">4</property>
                     <property name="margin_bottom">4</property>
-                    <signal name="button-press-event" handler="convert_file" object="recievetextbuffer" swapped="yes"/>
+                    <signal name="button-press-event" handler="convert_file" object="receivetextbuffer" swapped="yes"/>
                     <child>
                       <object class="GtkImage">
                         <property name="visible">True</property>

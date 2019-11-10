@@ -39,10 +39,10 @@ struct _GtkminimodemWindow
   GtkToggleButton     *speed_50bps;
   GtkToggleButton     *speed_100bps;
   GtkToggleButton     *speed_300bps;
-  GtkTextBuffer       *recievetextbuffer;
+  GtkTextBuffer       *receivetextbuffer;
   GtkTextBuffer       *sendtextbuffer;
   GtkTextView         *sendtext;
-  GtkTextView         *recievetext;
+  GtkTextView         *receivetext;
 };
 
 G_DEFINE_TYPE (GtkminimodemWindow, gtkminimodem_window, GTK_TYPE_APPLICATION_WINDOW)
@@ -86,7 +86,7 @@ on_sendbutton_trash_button_press_event( GtkTextBuffer *widget )
  *
  */
 static void
-on_recieve_trash_button_press_event( GtkTextBuffer *widget )
+on_receive_trash_button_press_event( GtkTextBuffer *widget )
 {
   GtkTextIter start, end;
 
@@ -153,6 +153,7 @@ sendtext( void * sendtextbuffer )
     }
   }
   g_thread_exit(0);
+  return(0);
 }
 
 /*
@@ -284,7 +285,7 @@ mainloop_exec( GtkminimodemWindow* window )
 
   if ( byte >= 0 ) {
     buffer[0]=(char)byte;
-    gtk_text_buffer_insert_at_cursor ( (GtkTextBuffer*)window->recievetextbuffer, buffer, 1 );
+    gtk_text_buffer_insert_at_cursor ( (GtkTextBuffer*)window->receivetextbuffer, buffer, 1 );
     byte=-1;
   }
 
@@ -317,13 +318,13 @@ gtkminimodem_window_class_init (GtkminimodemWindowClass *klass)
   gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, speed_50bps);
   gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, speed_100bps);
   gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, speed_300bps);
-  gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, recievetextbuffer);
+  gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, receivetextbuffer);
   gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, sendtextbuffer);
   gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, sendtext);
-  gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, recievetext);
+  gtk_widget_class_bind_template_child (widget_class, GtkminimodemWindow, receivetext);
   gtk_widget_class_bind_template_callback (widget_class, on_sendbutton_trash_button_press_event);
   gtk_widget_class_bind_template_callback (widget_class, on_sendbuffer_button_press_event);
-  gtk_widget_class_bind_template_callback (widget_class, on_recieve_trash_button_press_event);
+  gtk_widget_class_bind_template_callback (widget_class, on_receive_trash_button_press_event);
   gtk_widget_class_bind_template_callback (widget_class, on_speed_50bps_button_press_event);
   gtk_widget_class_bind_template_callback (widget_class, on_speed_100bps_button_press_event);
   gtk_widget_class_bind_template_callback (widget_class, on_speed_300bps_button_press_event);
@@ -341,6 +342,6 @@ gtkminimodem_window_init (GtkminimodemWindow *self)
   gtk_widget_init_template (GTK_WIDGET (self));
   minimodem_readthread = g_thread_new( "minimodemread", mainread, NULL);
   gtk_text_view_set_monospace ((GtkTextView*)self->sendtext, TRUE);
-  gtk_text_view_set_monospace ((GtkTextView*)self->recievetext, TRUE);
+  gtk_text_view_set_monospace ((GtkTextView*)self->receivetext, TRUE);
   (void)g_timeout_add (10, (GSourceFunc)mainloop_exec, self );
 }
